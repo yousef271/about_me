@@ -89,12 +89,11 @@
             text-align: center;
             width: 350px;
             cursor: default;
-            
+            transition: 1s;
         }
 
-        .discord {
+        .discord, .youtube, .tiktok {
             top: 75%;
-            left: 50%;
             transform: translate(-50%, -50%); /* Center the container */
             position: absolute;
             width: 3%;
@@ -102,6 +101,10 @@
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)); /* White glow */ 
             cursor: pointer;
         }
+
+        .discord { left: 50%; }
+        .youtube { left: 40%; }
+        .tiktok { left: 60%; }
 
         .blur {
             background-color: white;
@@ -114,28 +117,6 @@
             z-index: -1;
             opacity: 20%;
         }
-
-        .youtube {
-            top: 75%;
-            left: 40%;
-            transform: translate(-50%, -50%); /* Center the container */
-            position: absolute;
-            width: 3%;
-            background: none;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)); /* White glow */ 
-            cursor: pointer;
-        }
-
-        .tiktok {
-            top: 75%;
-            left: 60%;
-            transform: translate(-50%, -50%); /* Center the container */
-            position: absolute;
-            width: 3%;
-            background: none;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)); /* White glow */ 
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -147,10 +128,37 @@
     <div class="container"></div>
     <img class="discord_image" src="fb6910a001b52a3e4159b939ff36b8e4.jpg" alt="">
     <h1 class="roblox_text">You7adi901</h1>
-    <p class="description">You realize that nobody cares about you when you are alive but when you are dead everyone cries.</p>
+    <p class="description" id="description">Loading...</p>
     <a href="https://discordapp.com/users/you7adi901__51103/" target="_blank"><img class="discord" src="discord_clyde.png"></a>
     <a href="https://www.youtube.com/@GreenvilleRoleplayCollective" target="_blank"><img class="youtube" src="youtube-app-white-icon.jpg" alt=""></a>
     <a href="https://www.tiktok.com/@gvrp_collective" target="_blank"><img class="tiktok" src="transparent-tiktok-logo-letter-t-black-and-white-inverted-t-wh-black-and-white-t-with-inverted-1710878548472-removebg-preview.png" alt=""></a>
     <div class="blur"></div>
+
+    <script>
+        let count = 0;
+        const messages = [
+            "You realize that nobody cares about you when you are alive but when you are dead everyone cries.",
+            "In the end, we will remember not the words of our enemies, but the silence of our friends.",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+            "The future belongs to those who believe in the beauty of their dreams.",
+            "It does not matter how slowly you go as long as you do not stop.",
+        ];
+
+        
+        function changeText() {
+            const description = document.getElementById("description");
+            description.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                description.innerText = messages[count % messages.length];
+                description.style.opacity = 1; // Fade in
+            }, 1000); // Wait for fade out to finish
+            count++;
+        }
+
+        // Set the initial quote immediately
+        changeText();
+        // Change the quote every 5 seconds
+        setInterval(changeText, 5000);
+    </script>
 </body>
 </html>
